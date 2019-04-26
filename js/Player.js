@@ -57,7 +57,7 @@ class Player {
             /*.setBody({
                 type: 'rectangle', width: 14, height: 28
             });*/
-        
+        this.sprite.setFixedRotation(true);
         this.sprite.label = 'player';
         this.sprite.spawnPoint = [x,y];
         //this.sprite.setStatic(true);

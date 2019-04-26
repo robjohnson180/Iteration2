@@ -23,7 +23,7 @@ var config = {
         }]
     },
 
-    scene: [TutScene],
+    scene: [TutScene, Level1],
     callbacks: {
         postBoot: function () {
             resize();

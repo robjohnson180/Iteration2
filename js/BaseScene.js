@@ -39,14 +39,19 @@ class BaseScene extends Phaser.Scene {
         this.collideLayer.setCollisionByProperty({ collides: true });
         this.spikes.setCollisionByProperty({ collides: true });
         this.spikes.label = 'spike';
-       // console.log(this.collideLayer);
+        // console.log(this.collideLayer);
         const myLand = this.matter.world.convertTilemapLayer(this.collideLayer);
         const mySpikes = this.matter.world.convertTilemapLayer(this.spikes);
         this.flag = this.matter.add.sprite(608, 96, 'flag');
         this.flag.setStatic(true);
         this.flag.label = 'flag';
         //Saves
-        this.saves = new Save(this, 20, 20);
+        this.savesSpawn = map.findObject('objectLayer', function (object) {
+            if (object.type === "saves" && object.name === "saveSpawn") {
+                return object;
+            }
+        });
+        this.saves = new Save(this, this.savesSpawn.x, this.savesSpawn.y);
         this.saves.sprite.label = 'saves';
         //Player
         this.playerSpawn = map.findObject('objectLayer', (object) => { if (object.name == 'playerSpawn') { return object } });
@@ -127,7 +132,7 @@ class BaseScene extends Phaser.Scene {
         switch (this.id) {
             case 'tutScene':
                 console.log('change scene');
-                this.scene.start('sceneA');
+                this.scene.start('level1');
                 break
         }
     }

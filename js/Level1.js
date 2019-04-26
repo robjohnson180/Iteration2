@@ -1,8 +1,8 @@
-class TutScene extends BaseScene {
+class Level1 extends BaseScene {
     constructor() {
-        super('tutScene');
-        this.tileDataKey = 'tutorial';
-        this.tileDataSource = 'assets/tutorial.json';
+        super('level1');
+        this.tileDataKey = 'level1';
+        this.tileDataSource = 'assets/level1.json';
     }
     preload() {
         super.preload();
