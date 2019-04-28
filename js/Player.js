@@ -64,7 +64,7 @@ class Player {
         //TODO mobile input
         this.scene.input.addPointer(3);
 
-        const testButton = scene.add.text(80, 140, 'Right', { fill: '#0f0' });
+        /*const testButton = scene.add.text(16, 80, 'Right', { fill: '#0f0' });
         testButton.setInteractive();
         testButton.setScrollFactor(0);
         testButton.on('pointerdown', () => { this.moveRight = true; });
@@ -77,19 +77,35 @@ class Player {
         const testButton3 = scene.add.text(440, 140, 'Jump', { fill: '#0f0' });
         testButton3.setInteractive();
         testButton3.setScrollFactor(0);
+        testButton3.on('pointerdown', () => { this.jumpUp = true; });*/
+        const buttonRadius = 12;
+        const testButton = scene.add.circle(32 + buttonRadius, 80, buttonRadius);
+        testButton.setFillStyle('#00ff00');
+        testButton.setInteractive();
+        testButton.setScrollFactor(0);
+        testButton.on('pointerdown', () => { this.moveRight = true; });
+        testButton.on('pointerup', () => { this.moveRight = false; });
+        const testButton2 = scene.add.circle(16, 80, buttonRadius, { fill: '#0f0' });
+        testButton2.setInteractive();
+        testButton2.setScrollFactor(0);
+        testButton2.on('pointerdown', () => { this.moveLeft = true; });
+        testButton2.on('pointerup', () => { this.moveLeft = false; });
+        const testButton3 = scene.add.circle(144, 80, buttonRadius, { fill: '#0f0' });
+        testButton3.setInteractive();
+        testButton3.setScrollFactor(0);
         testButton3.on('pointerdown', () => { this.jumpUp = true; });
-        this.scene.input.on('pointerup', (pointer) => { if (pointer.x < 300) { this.moveLeft = this.moveRight = false; }});
+        this.scene.input.on('pointerup', (pointer) => { if (pointer.x < 80) { this.moveLeft = this.moveRight = false; }});
     }
     freeze() {
         this.sprite.setStatic(true);
     }
     update() {
-        if (this.scene.input.pointer1.isDown) {
+        /*if (this.scene.input.pointer1.isDown) {
             this.moveLeft = true;
         }
         if (this.scene.input.pointer2.isDown) {
             this.jumpUp = true;
-        }
+        }*/
         if (Phaser.Input.Keyboard.JustDown(this.keys.right)) {
             this.moveRight = true;
         }

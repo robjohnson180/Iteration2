@@ -2,8 +2,9 @@ console.log("loaded");
 
 var config = {
     type: Phaser.AUTO,
-    width: 512,
-    height: 512,
+    //512
+    width: 160,
+    height: 96,
     scene: {
 
     },
